@@ -26,5 +26,5 @@ urlpatterns = [
     path('login', views.login),
     path('pc', views.pc),
     path('test/$', views.showTest),
-
+    path('', views.index),
 ]

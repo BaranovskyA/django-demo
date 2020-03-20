@@ -839,7 +839,6 @@ header .logo a {
 	color: transparent;
 	width: 42px;
 	height: 42px;
-	background: url("../images/logo1.png") no-repeat center;
 	background-size: 42px 42px;
 	-moz-transition: all 0.5s ease-in-out;
 	-o-transition: all 0.5s ease-in-out;
@@ -1148,7 +1147,6 @@ a.menu-toggle {
  */
 
 #intro {
-	background: #14181E url(../images/intro-bg1.jpg) no-repeat center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
@@ -1526,7 +1524,6 @@ a.menu-toggle {
  */
 
 #features {
-	background: #090909 url(../images/features-bg.jpg) no-repeat center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
@@ -2203,7 +2200,6 @@ footer ul li {
 .footer-main .footer-logo {
 	width: 162px;
 	height: 39px;
-	background: url("../images/footer-logo.png") no-repeat center;
 	background-size: 162px 39px;
 	margin: -.6rem 0 2.1rem -.3rem;
 	display: block;

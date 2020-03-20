@@ -1,1 +1,1 @@
-web: gunicorn django-demo.wsgi
+web: gunicorn gettingstarted.wsgi --log-file -

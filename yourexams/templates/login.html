@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log In | YOUR-EXAMS.RU</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+
+</head>
+
+<body>
+
+<div class="test-add-form-parent">
+    <div class="test-add-form-child">
+
+        <a href="main" class="return-a">Back to Main</a>
+
+        <h3>Авторизация</h3>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div>
+                <h4>Имя пользователя</h4>
+                <input type="text" placeholder="Username" maxlength=24 name="username">
+                <h4>Пароль</h4>
+                <input type="password" placeholder="Password" maxlength=24 name="password"> <br> <br>
+
+                Don't have an account ? <a href="register">Register new</a> <br> <br>
+
+                <button>Log In</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

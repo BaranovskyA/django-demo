@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Test | YOUR-EXAMS.RU</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+
+</head>
+
+<body>
+
+    <div class="test-add-form-parent">
+        <div class="test-add-form-child">
+
+            <form method="POST">
+                {% csrf_token %}
+                <a href="pc" class="return-a">Back to Main</a>
+
+                <h3>Заголовок</h3>
+                <input type="text" placeholder="Title" maxlength=32 name="title">
+
+                <div class="questions-div">
+                    <h3>Вопросы</h3>
+                    <input maxlength=32 name="question" type="text" placeholder="Question" maxlength=64>
+                    <br>
+                    <input maxlength=32 name="correctAnswer" type="text" placeholder="Correct Answer">
+                    <input maxlength=32 name="uncorrectAnswer1" type="text" placeholder="Uncorrect Answer"><br>
+                    <input maxlength=32 name="uncorrectAnswer2" type="text" placeholder="Uncorrect Answer">
+                    <input maxlength=32 name="uncorrectAnswer3" type="text" placeholder="Uncorrect Answer"><br>
+
+                    <input type="submit" value=" " class="add-plus">
+                </div>
+
+                <h2>{{ error }}</h2>
+            </form>
+
+             <div class="test-show-div">
+                 <h3>Текущий тест: </h3>
+                 <ul>
+                    <h4>{{ test.title }}</h4>
+
+                    {% if test.title != None %}
+                        {% cycle '' 'main-li' 'answer' 'answer' 'answer' as myDivision %}
+                        {% for q in questions %}
+                            <li class="{% cycle myDivision %}">{{ q }}</li>
+                        {% endfor %}
+                    {% endif %}
+                 </ul>
+             </div>
+        </div>
+    </div>
+
+</body>
+</html>

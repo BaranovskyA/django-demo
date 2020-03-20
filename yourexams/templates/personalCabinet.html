@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Cabinet | YOUR-EXAMS.RU</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+</head>
+<body>
+
+<div class="main-content">
+    <nav class="pc-nav">
+        <div class="logo"
+             style="background: url('../static/images/logo1.png') no-repeat center; background-size: 42px 42px; width: 50px; height: 50px;"></div>
+
+        <ul class="pc-menu">
+            <li><a href="add">Add Test</a></li>
+            <li><a href="#">Hello, {{ userLogin }}</a></li>
+            <li><a href="main">Log Out</a></li>
+        </ul>
+    </nav>
+
+    <div class="panel">
+        <ul class="panel-menu">
+            <li><a href="add">YourTests</a></li>
+            <li><a href="main">CompletedTests</a></li>
+        </ul>
+
+        <div class="panel-div">
+            <div class="panel-content">
+                {% for mt in myTests %}
+                    <div class="panel-content-child">
+                        <h1><a href="#">{{ mt }}</a></h1>
+                    </div>
+                {% endfor %}
+                
+            </div>
+
+            <div class="panel-content">
+                <div class="panel-content-child"></div>
+                <div class="panel-content-child"></div>
+                <div class="panel-content-child"></div>
+                <div class="panel-content-child"></div>
+                <div class="panel-content-child"></div>
+                <div class="panel-content-child"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

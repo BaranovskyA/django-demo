@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration | YOUR-EXAMS.RU</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+
+</head>
+
+<body>
+
+    <div class="test-add-form-parent">
+        <div class="test-add-form-child">
+
+            <a href="main" class="return-a">Back to Main</a>
+
+            <h3>Регистрация</h3>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div>
+                    <h4>Имя пользователя</h4>
+                    <input type="text" placeholder="Username" maxlength=24 name="username">
+                    <h4>Электронная почта</h4>
+                    <input type="text" placeholder="Email" maxlength=32 name="email">
+                    <h4>Пароль</h4>
+                    <input type="password" placeholder="Password" maxlength=24 name="password">
+                    <h4>Повторите пароль</h4>
+                    <input type="password" placeholder="Replay password" maxlength=24 name="repassword"> <br> <br>
+
+                    Already have account ? <a href="login">Log In</a> <br> <br>
+
+                    <button>Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

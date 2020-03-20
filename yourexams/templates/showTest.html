@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show {{ test.title }} | YOUR-EXAMS.RU</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+
+</head>
+
+<body>
+
+    <div class="test-add-form-parent">
+        <div class="test-add-form-child">
+            <div>
+                <h3>Название теста</h3>
+                <form action="POST">
+                    <h4>Вопрос</h4>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans1">Ответ1Ответ1Ответ1Ответ1Ответ1</p><br>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans1">Ответ2Ответ2Ответ2Ответ2Ответ2</p><br>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans1">Ответ3Ответ3Ответ3Ответ3Ответ3</p><br>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans1">Ответ4Ответ4Ответ4Ответ4Ответ4</p><br>
+
+                    <br><br>
+
+                    <h4>Вопрос</h4>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans2">Ответ1Ответ1Ответ1Ответ1Ответ1</p><br>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans2">Ответ2Ответ2Ответ2Ответ2Ответ2</p><br>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans2">Ответ3Ответ3Ответ3Ответ3Ответ3</p><br>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans2">Ответ4Ответ4Ответ4Ответ4Ответ4</p><br>
+
+                    <br><br>
+
+                    <h4>Вопрос</h4>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans3">Ответ1Ответ1Ответ1Ответ1Ответ1</p><br>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans3">Ответ2Ответ2Ответ2Ответ2Ответ2</p><br>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans3">Ответ3Ответ3Ответ3Ответ3Ответ3</p><br>
+                    <p class="answer-p"><input class="answer-input" type="radio" name="ans3">Ответ4Ответ4Ответ4Ответ4Ответ4</p><br>
+                
+                    <br><br>
+                    <button>Завершить тест</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

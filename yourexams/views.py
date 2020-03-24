@@ -97,7 +97,7 @@ def reg(request):
             mo.User.objects.get(username = request.POST['username']).delete()
             user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
             user.save()
-            send_mail('YOUR-EXAMS.RU', '{0}{1}{2}'.format("Дорогой ", request.POST['username'], ", спасибо за регистрацию на нашем сайте."), '1423demon@mail.ru', [request.POST['email']], fail_silently=False)
+            send_mail('YOUR-EXAMS', '{0}{1}{2}'.format("Дорогой ", request.POST['username'], ", спасибо за регистрацию на нашем сайте."), '1423demon@mail.ru', [request.POST['email']], fail_silently=False)
         except Exception as e:
             print(e)
             

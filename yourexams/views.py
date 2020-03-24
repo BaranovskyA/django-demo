@@ -92,16 +92,13 @@ def reg(request):
     elif request.method == 'POST':
         if request.POST['password'] != request.POST['repassword']:
             return render(request, 'registration.html', context={'error': 'Ошибка: пароли не совпадают.'})
-        user = None
-        try:
-            mo.User.objects.get(username = request.POST['username']).delete()
+        findUser = User.objects.filter(username=request.POST['username'])
+        if findUser:
+            return render(request, 'registration.html', context={'error': 'Ошибка: пользователь с таким логином уже существует.'})
+        else:
             user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
             user.save()
             send_mail('YOUR-EXAMS', '{0}{1}{2}'.format("Дорогой ", request.POST['username'], ", спасибо за регистрацию на нашем сайте."), '1423demon@mail.ru', [request.POST['email']], fail_silently=False)
-        except Exception as e:
-            print(e)
-            
-            return render(request, 'registration.html', context={'error': 'Ошибка: пользователь с таким логином или почтой уже существует.'})
         return render(request, 'index.html')
     return render(request, 'index.html')
 

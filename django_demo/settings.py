@@ -132,6 +132,15 @@ USE_L10N = True
 
 USE_TZ = True
 
+EMAIL_HOST = 'smtp.mail.ru' 
+
+EMAIL_HOST_USER = '1423demon@mail.ru'
+
+EMAIL_HOST_PASSWORD = 'Baranovsky2003'
+
+EMAIL_PORT = 465 
+
+EMAIL_USE_TLS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/

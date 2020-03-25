@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
+
     {% load i18n %}
     {% load static %}
 
@@ -17,32 +17,26 @@
     <div class="test-add-form-parent">
         <div class="test-add-form-child">
             <div>
-                <h3>Название теста</h3>
+                <h2>{{ error }}</h2>
+                <h3>{{ test.title }}</h3>
                 <form action="POST">
-                    <h4>Вопрос</h4>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans1">Ответ1Ответ1Ответ1Ответ1Ответ1</p><br>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans1">Ответ2Ответ2Ответ2Ответ2Ответ2</p><br>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans1">Ответ3Ответ3Ответ3Ответ3Ответ3</p><br>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans1">Ответ4Ответ4Ответ4Ответ4Ответ4</p><br>
 
-                    <br><br>
-
-                    <h4>Вопрос</h4>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans2">Ответ1Ответ1Ответ1Ответ1Ответ1</p><br>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans2">Ответ2Ответ2Ответ2Ответ2Ответ2</p><br>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans2">Ответ3Ответ3Ответ3Ответ3Ответ3</p><br>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans2">Ответ4Ответ4Ответ4Ответ4Ответ4</p><br>
-
-                    <br><br>
-
-                    <h4>Вопрос</h4>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans3">Ответ1Ответ1Ответ1Ответ1Ответ1</p><br>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans3">Ответ2Ответ2Ответ2Ответ2Ответ2</p><br>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans3">Ответ3Ответ3Ответ3Ответ3Ответ3</p><br>
-                    <p class="answer-p"><input class="answer-input" type="radio" name="ans3">Ответ4Ответ4Ответ4Ответ4Ответ4</p><br>
-                
-                    <br><br>
-                    <button>Завершить тест</button>
+                    {% if test.title != None %}
+                        {% for a1 in content %}
+                            {% for a2 in a1 %}
+                                {% for q in a2.keys %}
+                                    <h4>{{q.id}}. {{ q.text }}</h4>
+                                    {% for a in a2.values %}
+                                        {% for an in a %}
+                                            <p class="answer-p"><input class="answer-input" type="radio" value="{{an}}" name="{{q.id}}">{{an}}</p><br>
+                                        {% endfor %}
+                                    {% endfor %}
+                                    <br><br>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endfor %}
+                        <button>Завершить тест</button>
+                    {% endif %}
                 </form>
             </div>
         </div>

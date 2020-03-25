@@ -37,7 +37,8 @@
             <div class="panel-content">
                 {% for mt in myTests %}
                     <div class="panel-content-child">
-                        <h1><a href="#">{{ mt }}</a></h1>
+                        <h1 class="titleTest"><a href="test/{{mt.id}}">{{ mt.title }}</a></h1>
+                        <h2 class="descTest">Создан {{ mt.date_creating }} Человек прошло: {{ mt.ends }}</h2>
                     </div>
                 {% endfor %}
             </div>

@@ -15,11 +15,6 @@ from rest_framework.views import APIView
 
 from .models import Test, Question, Answer
 
-def show(request, test_id: int):
-    test = mo.Test.objects.get(pk=test_id)
-    return render(request, 'show.html', context={'test': test})
-
-
 def index(request):
     logout(request)
     return render(request, 'index.html')
@@ -114,7 +109,7 @@ def login(request):
             auth_login(request, user)
             return redirect(request.GET.get('next', '/pc'))
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html', context={'error': "Ошибка: данного пользователя не существует либо введены неверные данные."})
     return render(request, 'login.html')
 
 @login_required
@@ -122,12 +117,32 @@ def pc(request):
     if request.user.is_authenticated:
         tests = []
         for t in Test.objects.filter(user=request.user):
-            tests.append(t.title)
+            tests.append(t)
         return render(request, 'personalCabinet.html', context={'userLogin': request.user, 'myTests': tests})
 
 @login_required
 def showTest(request, test_id):
-    return render(request, 'showTest.html')
+    try:
+        checkTest = Test.objects.get(pk=test_id)
+        content = []
+        answers = []
+        nums = []
+        num = 1
+        for q in checkTest.question_set.all():
+            for a in q.answer_set.all():
+                answers.append(a.text)
+            content.append([{q: answers}])
+            nums.append(num)
+            answers = []
+            num+=1
+        return render(request, 'showTest.html', context={'test':checkTest, 'content':content})
+    except Exception as e:
+        print(e)
+        #return render(request, 'showTest.html', context={'test':checkTest, 'content':content, 'nums': nums})
+        return render(request, 'showTest.html', context={'error': "Ошибка: данный тест не существует."})
+
+def acceptTest(request):
+    pass
 
 
 class TestsView(APIView):

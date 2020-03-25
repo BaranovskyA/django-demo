@@ -88,7 +88,6 @@ def addTest(request):
 
 def reg(request):
     if request.method == 'GET':
-        
         return render(request, 'registration.html')
     elif request.method == 'POST':
         if request.POST['password'] != request.POST['repassword']:
@@ -99,8 +98,7 @@ def reg(request):
         else:
             user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
             user.save()
-            secret_url = 'http://127.0.0.1:8000/emailAccept/' + str(make_password(user.id))
-            send_mail('YOUR-EXAMS', '{0}{1}{2}{3}'.format("Дорогой ", request.POST['username'], ", спасибо за регистрацию на нашем сайте. Ваша ссылка для подтверждения аккаунта: ", secret_url), '1423demon@mail.ru', [request.POST['email']], fail_silently=False)
+            send_mail('YOUR-EXAMS', '{0}{1}{2}'.format("Дорогой ", request.POST['username'], ", спасибо за регистрацию на нашем сайте."), '1423demon@mail.ru', [request.POST['email']], fail_silently=False)
         return render(request, 'index.html')
     return render(request, 'index.html')
 
@@ -112,7 +110,6 @@ def login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
-
         if user is not None:
             auth_login(request, user)
             return redirect(request.GET.get('next', '/pc'))
@@ -128,13 +125,9 @@ def pc(request):
             tests.append(t.title)
         return render(request, 'personalCabinet.html', context={'userLogin': request.user, 'myTests': tests})
 
-
-def showTest(request):
+@login_required
+def showTest(request, test_id):
     return render(request, 'showTest.html')
-
-
-def acceptUser(request, id):
-    print(request.path_info, make_password(id))
 
 
 class TestsView(APIView):

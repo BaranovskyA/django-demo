@@ -55,7 +55,20 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware',    
 ]
+
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = (
+	('ru', u'Русский'),
+	('en', 'English'),
+)
+
+LOCALE_PATHS = (
+	os.path.join(BASE_DIR, 'yourexams\locale'),
+)
+
 
 ROOT_URLCONF = 'django_demo.urls'
 
@@ -132,15 +145,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-EMAIL_HOST = 'smtp.mail.ru' 
 
-EMAIL_HOST_USER = '1423demon@mail.ru'
-
-EMAIL_HOST_PASSWORD = 'Baranovsky2003'
-
-EMAIL_PORT = 465 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = '1423demon@gmail.com'
+EMAIL_HOST_PASSWORD = 'sasha10asd2003lolo'
+EMAIL_PORT = 587
+EMAIL_USE_SSL = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/

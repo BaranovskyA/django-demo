@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Log In | YOUR-EXAMS.RU</title>
-
     {% load static %}
+    {% load i18n %}
+    
+    <meta charset="UTF-8">
+    <title>{% trans "Log In" %} | YOUR-EXAMS.RU</title>
 
     <link rel="stylesheet" href="{% static 'css/forms.css' %}">
 
@@ -15,21 +16,21 @@
 <div class="test-add-form-parent">
     <div class="test-add-form-child">
 
-        <a href="main" class="return-a">Back to Main</a>
+        <a href="main" class="return-a">{% trans "Back to Main" %}</a>
 
-        <h3>Авторизация</h3>
+        <h3>{% trans "Log In" %}</h3>
 
         <form method="POST">
             {% csrf_token %}
             <div>
-                <h4>Имя пользователя</h4>
-                <input type="text" placeholder="Username" maxlength=24 name="username">
-                <h4>Пароль</h4>
-                <input type="password" placeholder="Password" maxlength=24 name="password"> <br> <br>
+                <h4>{% trans "Username" %}</h4>
+                <input type="text" placeholder="{% trans "Username" %}" maxlength=24 name="username">
+                <h4>{% trans "Password" %}</h4>
+                <input type="password" placeholder="{% trans "Password" %}" maxlength=24 name="password"> <br> <br>
 
-                Don't have an account ? <a href="register">Register new</a> <br> <br>
+                {% trans "Don't have an account ?" %} <a href="register">{% trans "Register" %}</a> <br> <br>
 
-                <button>Log In</button>
+                <button>{% trans "Log In" %}</button>
             </div>
         </form>
     </div>

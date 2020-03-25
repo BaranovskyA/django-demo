@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Registration | YOUR-EXAMS.RU</title>
-
     {% load static %}
+    {% load i18n %}
+
+    <meta charset="UTF-8">
+    <title>{% trans "Registration" %} | YOUR-EXAMS.RU</title>
 
     <link rel="stylesheet" href="{% static 'css/forms.css' %}">
 
@@ -15,27 +16,27 @@
     <div class="test-add-form-parent">
         <div class="test-add-form-child">
 
-            <a href="main" class="return-a">Back to Main</a>
+            <a href="main" class="return-a">{% trans "Back to Main" %}</a>
 
-            <h3>Регистрация</h3>
+            <h3>{% trans "Registration" %}</h3>
 
             <form method="POST">
                 {% csrf_token %}
                 <div>
-                    <h4>Имя пользователя</h4>
-                    <input type="text" placeholder="Username" maxlength=24 name="username">
-                    <h4>Электронная почта</h4>
-                    <input type="text" placeholder="Email" maxlength=32 name="email">
-                    <h4>Пароль</h4>
-                    <input type="password" placeholder="Password" maxlength=24 name="password">
-                    <h4>Повторите пароль</h4>
-                    <input type="password" placeholder="Replay password" maxlength=24 name="repassword"> <br> <br>
+                    <h4>{% trans "Username" %}</h4>
+                    <input type="text" placeholder="{% trans "Username" %}" maxlength=24 name="username">
+                    <h4>{% trans "Email" %}</h4>
+                    <input type="text" placeholder="{% trans "Email" %}" maxlength=32 name="email">
+                    <h4>{% trans "Password" %}</h4>
+                    <input type="password" placeholder="{% trans "Password" %}" maxlength=24 name="password">
+                    <h4>{% trans "Replay password" %}</h4>
+                    <input type="password" placeholder="{% trans "Replay password" %}" maxlength=24 name="repassword"> <br> <br>
 
-                    Already have account ? <a href="login">Log In</a> <br> <br>
+                    {% trans "Already have account ?" %} <a href="login">{% trans "Log In" %}</a> <br> <br>
 
                     <h2>{{ error }}</h2>
                     
-                    <button>Register</button>
+                    <button>{% trans "Register" %}</button>
                 </div>
             </form>
         </div>

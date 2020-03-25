@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
+from django.contrib.auth.hashers import make_password
 
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -98,7 +99,8 @@ def reg(request):
         else:
             user = User.objects.create_user(request.POST['username'], request.POST['email'], request.POST['password'])
             user.save()
-            send_mail('YOUR-EXAMS', '{0}{1}{2}'.format("Дорогой ", request.POST['username'], ", спасибо за регистрацию на нашем сайте."), '1423demon@mail.ru', [request.POST['email']], fail_silently=False)
+            secret_url = 'http://127.0.0.1:8000/emailAccept/' + str(make_password(user.id))
+            send_mail('YOUR-EXAMS', '{0}{1}{2}{3}'.format("Дорогой ", request.POST['username'], ", спасибо за регистрацию на нашем сайте. Ваша ссылка для подтверждения аккаунта: ", secret_url), '1423demon@mail.ru', [request.POST['email']], fail_silently=False)
         return render(request, 'index.html')
     return render(request, 'index.html')
 
@@ -131,6 +133,8 @@ def showTest(request):
     return render(request, 'showTest.html')
 
 
+def acceptUser(request, id):
+    print(request.path_info, make_password(id))
 
 
 class TestsView(APIView):

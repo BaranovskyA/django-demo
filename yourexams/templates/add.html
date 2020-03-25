@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Test | YOUR-EXAMS.RU</title>
 
+    {% load i18n %}
     {% load static %}
+
+    <title>{% trans "Add Test" %} | YOUR-EXAMS.RU</title>
 
     <link rel="stylesheet" href="{% static 'css/forms.css' %}">
 
@@ -17,19 +19,19 @@
 
             <form method="POST">
                 {% csrf_token %}
-                <a href="pc" class="return-a">Back to Main</a>
+                <a href="pc" class="return-a">{% trans "Back to Main" %}</a>
 
-                <h3>Заголовок</h3>
-                <input type="text" placeholder="Title" maxlength=32 name="title">
+                <h3>{% trans "Title" %}</h3>
+                <input type="text" placeholder="{% trans "Title" %}" maxlength=32 name="title">
 
                 <div class="questions-div">
-                    <h3>Вопросы</h3>
-                    <input maxlength=32 name="question" type="text" placeholder="Question" maxlength=64>
+                    <h3>{% trans "Question" %}</h3>
+                    <input maxlength=128 name="question" type="text" placeholder="{% trans "Question" %}" maxlength=64>
                     <br>
-                    <input maxlength=32 name="correctAnswer" type="text" placeholder="Correct Answer">
-                    <input maxlength=32 name="uncorrectAnswer1" type="text" placeholder="Uncorrect Answer"><br>
-                    <input maxlength=32 name="uncorrectAnswer2" type="text" placeholder="Uncorrect Answer">
-                    <input maxlength=32 name="uncorrectAnswer3" type="text" placeholder="Uncorrect Answer"><br>
+                    <input maxlength=128 name="correctAnswer" type="text" placeholder="{% trans "Correct Answer" %}">
+                    <input maxlength=128 name="uncorrectAnswer1" type="text" placeholder="{% trans "Answer" %}"><br>
+                    <input maxlength=128 name="uncorrectAnswer2" type="text" placeholder="{% trans "Answer" %}">
+                    <input maxlength=128 name="uncorrectAnswer3" type="text" placeholder="{% trans "Answer" %}"><br>
 
                     <input type="submit" value=" " class="add-plus">
                 </div>

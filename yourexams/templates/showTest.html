@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Show {{ test.title }} | YOUR-EXAMS.RU</title>
-
+    
+    {% load i18n %}
     {% load static %}
+
+    <title>Show {{ test.title }} | YOUR-EXAMS.RU</title>
 
     <link rel="stylesheet" href="{% static 'css/forms.css' %}">
 

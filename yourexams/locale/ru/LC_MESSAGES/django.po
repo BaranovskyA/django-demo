@@ -44,6 +44,9 @@ msgstr "Вопрос"
 msgid "Answer"
 msgstr "Ответ"
 
+msgid "Correct Answer"
+msgstr "Правильный ответ"
+
 #: .\yourexams\templates\login.html:26
 msgid "Username"
 msgstr "Имя пользователя"
@@ -52,12 +55,15 @@ msgstr "Имя пользователя"
 msgid "Password"
 msgstr "Пароль"
 
+msgid "Replay password"
+msgstr "Повторите пароль"
+
 #: .\yourexams\templates\login.html:31
 msgid "Don't have an account ?"
 msgstr "Нет аккаунта ?"
 
 #: .\yourexams\templates\login.html:31
-msgid "Register"
+msgid "Registration"
 msgstr "Регистрация"
 
 msgid "Log In"
@@ -65,3 +71,30 @@ msgstr "Авторизация"
 
 msgid "Back to Main"
 msgstr "На главную"
+
+msgid "Reset password"
+msgstr "Восстановить пароль"
+
+msgid "Register"
+msgstr "Зарегистрироваться"
+
+msgid "Already have account ?"
+msgstr "Уже есть аккаунт ?"
+
+msgid "Email"
+msgstr "Электронная почта"
+
+msgid "Add Test"
+msgstr "Добавить тест"
+
+msgid "Hello, "
+msgstr "Привет, "
+
+msgid "Change password"
+msgstr "Сменить пароль"
+
+msgid "Log out"
+msgstr "Выйти"
+
+msgid "Personal cabinet"
+msgstr "Личный кабинет"

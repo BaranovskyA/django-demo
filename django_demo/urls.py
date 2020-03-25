@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 from yourexams import views
 from django.shortcuts import render, HttpResponse
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +29,6 @@ urlpatterns = [
     path('pc', views.pc),
     #path('test/$', views.showTest),
     path('', views.index),
+    #path('emailAccept/<path:hash_id>', views.acceptUser)
+    url('^', include('django.contrib.auth.urls')),
 ]

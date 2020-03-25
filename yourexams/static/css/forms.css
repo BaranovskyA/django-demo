@@ -211,6 +211,8 @@ a {
     height: 100%;
     margin: 5%;
     overflow: auto;
+    border-right: 1px solid gray;
+    border-left: 1px solid gray;
 }
 
 .panel-div {

@@ -11,10 +11,20 @@ class Test(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name = _(u'Пользователь'))
 
 class Question(models.Model):
-    text = f.TextField(verbose_name = _(u'Вопрос'))
+    text = f.TextField(verbose_name = _(u'Вопрос'), max_length=128)
     test = ForeignKey(Test, on_delete=models.CASCADE, null=True)
 
 class Answer(models.Model):
-    text = f.TextField(verbose_name = _(u'Ответ'))
+    text = f.TextField(verbose_name = _(u'Ответ'), max_length=128)
     is_correct = f.BooleanField(default=False)
     question = ForeignKey(Question, on_delete=models.CASCADE, null=True)
+
+class CompletedTest(models.Model):
+    title = f.TextField(null=False, max_length=32, verbose_name = _(u'Заголовок'))
+    date_creating = f.DateField(auto_now_add=True, verbose_name = _(u'Дата создания'))
+    ends = f.IntegerField(default=0, verbose_name = _(u'Количество завершений'))
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name = _(u'Пользователь'))
+
+class Person(User):
+    user_id = f.IntegerField()
+    is_accepted = f.BooleanField(default=False)

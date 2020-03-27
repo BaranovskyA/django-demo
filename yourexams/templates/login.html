@@ -24,9 +24,9 @@
             {% csrf_token %}
             <div>
                 <h4>{% trans "Username" %}</h4>
-                <input type="text" placeholder="{% trans "Username" %}" maxlength=24 name="username">
+                <input type="text" placeholder="{% trans "Username" %}" minlength=8 required maxlength=24 name="username">
                 <h4>{% trans "Password" %}</h4>
-                <input type="password" placeholder="{% trans "Password" %}" maxlength=24 name="password"> <br> <br>
+                <input type="password" placeholder="{% trans "Password" %}" minlength=8 required maxlength=24 name="password"> <br> <br>
 
                 <h2>{{ error }}</h2>
                 

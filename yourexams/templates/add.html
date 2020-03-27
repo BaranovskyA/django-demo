@@ -22,16 +22,16 @@
                 <a href="pc" class="return-a">{% trans "Back to Main" %}</a>
 
                 <h3>{% trans "Title" %}</h3>
-                <input type="text" placeholder="{% trans "Title" %}" maxlength=32 name="title">
+                <input required type="text" placeholder="{% trans "Title" %}" maxlength=32 name="title">
 
                 <div class="questions-div">
                     <h3>{% trans "Question" %}</h3>
-                    <input maxlength=128 name="question" type="text" placeholder="{% trans "Question" %}" maxlength=64>
+                    <input required maxlength=128 name="question" type="text" placeholder="{% trans "Question" %}" maxlength=64>
                     <br>
-                    <input maxlength=128 name="correctAnswer" type="text" placeholder="{% trans "Correct Answer" %}">
-                    <input maxlength=128 name="uncorrectAnswer1" type="text" placeholder="{% trans "Answer" %}"><br>
-                    <input maxlength=128 name="uncorrectAnswer2" type="text" placeholder="{% trans "Answer" %}">
-                    <input maxlength=128 name="uncorrectAnswer3" type="text" placeholder="{% trans "Answer" %}"><br>
+                    <input required maxlength=128 name="correctAnswer" type="text" placeholder="{% trans "Correct Answer" %}">
+                    <input required maxlength=128 name="uncorrectAnswer1" type="text" placeholder="{% trans "Answer" %}"><br>
+                    <input required maxlength=128 name="uncorrectAnswer2" type="text" placeholder="{% trans "Answer" %}">
+                    <input required maxlength=128 name="uncorrectAnswer3" type="text" placeholder="{% trans "Answer" %}"><br>
 
                     <input type="submit" value=" " class="add-plus">
                 </div>

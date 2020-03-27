@@ -45,9 +45,10 @@
 
             <div class="panel-content">
                 {% for ct in compTests %}
-                    <div class="panel-content-child">
-                        <h1><a href="#">{{ ct }}</a></h1>
-                    </div>
+                <div class="panel-content-child">
+                    <h1 class="titleTest"><a href="#">{{ ct.title }}</a></h1>
+                    <h2 class="descTest">Результат: {{ct.correctAnswers}}/{{ct.maxCorrectAnswers}}</h2>
+                </div>
                 {% endfor %}
             </div>
         </div>

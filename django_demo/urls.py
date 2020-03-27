@@ -27,7 +27,8 @@ urlpatterns = [
     path('register', views.reg),
     path('login', views.login),
     path('pc', views.pc),
-    path('test/<int:test_id>', views.showTest),
+    path('test/<int:test_id>/', views.showTest),
+    path('test/<int:test_id>/POST', views.acceptTest),
     path('', views.index),
     url('^', include('django.contrib.auth.urls')),
 ]

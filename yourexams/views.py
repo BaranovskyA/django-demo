@@ -13,7 +13,7 @@ from django.contrib.auth.hashers import make_password
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Test, Question, Answer
+from .models import Test, Question, Answer, CompletedTest
 
 def index(request):
     logout(request)
@@ -116,13 +116,24 @@ def login(request):
 def pc(request):
     if request.user.is_authenticated:
         tests = []
+        ctests = []
         for t in Test.objects.filter(user=request.user):
             tests.append(t)
-        return render(request, 'personalCabinet.html', context={'userLogin': request.user, 'myTests': tests})
+        for ct in CompletedTest.objects.filter(user=request.user):
+            ctests.append(ct)
+        return render(request, 'personalCabinet.html', context={'userLogin': request.user, 'myTests': tests, 'compTests': ctests})
 
 @login_required
 def showTest(request, test_id):
     try:
+        ct = CompletedTest.objects.filter(user=request.user)
+        if ct:
+            return render(request, 'showTest.html', context={'error': "Ошибка: данный тест уже пройден вами."})
+
+        t = Test.objects.filter(user=request.user)
+        if t:
+            return render(request, 'showTest.html', context={'error': "Ошибка: данный тест создан вами."})
+
         checkTest = Test.objects.get(pk=test_id)
         content = []
         answers = []
@@ -134,15 +145,33 @@ def showTest(request, test_id):
             content.append([{q: answers}])
             nums.append(num)
             answers = []
-            num+=1
+            num += 1
         return render(request, 'showTest.html', context={'test':checkTest, 'content':content})
     except Exception as e:
         print(e)
-        #return render(request, 'showTest.html', context={'test':checkTest, 'content':content, 'nums': nums})
         return render(request, 'showTest.html', context={'error': "Ошибка: данный тест не существует."})
 
-def acceptTest(request):
-    pass
+def acceptTest(request, test_id):
+    checkTest = Test.objects.get(pk=test_id)
+    maxAnswers = 0
+    answers = []
+    for q in checkTest.question_set.all():
+        for a in q.answer_set.all():
+            if a.is_correct:
+                maxAnswers += 1
+                answers.append(a.text)
+    index = 0
+    countCorrAns = 0
+    for ans in request.GET.values():
+        if ans == answers[index]:
+            countCorrAns += 1
+        index += 1
+
+    checkTest.ends += 1
+    checkTest.save()
+    newCorrTest = mo.CompletedTest(title=checkTest.title, correctAnswers=countCorrAns, maxCorrectAnswers=maxAnswers, user=request.user)
+    newCorrTest.save()
+    return redirect('../../pc')
 
 
 class TestsView(APIView):

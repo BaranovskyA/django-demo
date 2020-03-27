@@ -21,9 +21,10 @@ class Answer(models.Model):
 
 class CompletedTest(models.Model):
     title = f.TextField(null=False, max_length=32, verbose_name = _(u'Заголовок'))
-    date_creating = f.DateField(auto_now_add=True, verbose_name = _(u'Дата создания'))
-    ends = f.IntegerField(default=0, verbose_name = _(u'Количество завершений'))
+    correctAnswers = f.IntegerField(default=0, verbose_name = _(u'Количество правильных ответов'))
+    maxCorrectAnswers = f.IntegerField(default=0, verbose_name = _(u'Количество правильных ответов'))
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, verbose_name = _(u'Пользователь'))
+
 
 class Person(User):
     user_id = f.IntegerField()
